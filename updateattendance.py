@@ -7,15 +7,18 @@
 import pandas as pd
 import glob
 
-path = r'C:\Users\mshafique.salman\OneDrive - PETRONAS\Documents\Python\Attendance'
-all_files = glob.glob(path + "/*.csv")
+def export_new():
+  path = r'C:\\Users\\mshafique.salman\\OneDrive - PETRONAS\\Documents\\Python\\Attendance\\attendancelist'
+  all_files = glob.glob(path + "/*.csv")
 
-li = []
+  li = []
 
-for filename in all_files:
-    df = pd.read_csv(filename,index_col=None,header=0)
-    li.append(df)
+  for filename in all_files:
+      df = pd.read_csv(filename,index_col=None,header=0)
+      li.append(df)
 
-frame = pd.concat(li,axis=0,ignore_index=True)
-newframe = frame.drop_duplicates(subset='Full Name',inplace=False)
-newframe.to_csv(r'C:\Users\mshafique.salman\OneDrive - PETRONAS\Documents\Python\Attendance\attendancelist.csv',index=False)
+  frame = pd.concat(li,axis=0,ignore_index=True)
+  newframe = frame.drop_duplicates(subset='Full Name',inplace=False)
+  savenewframe = newframe.to_csv(r'C:\\Users\\mshafique.salman\\OneDrive - PETRONAS\\Documents\\Python\Attendance\\attendancelist\\attendancelist1.csv',index=False)
+
+export_new()
